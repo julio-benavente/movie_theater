@@ -1,16 +1,17 @@
 import styled, { createGlobalStyle, css } from "styled-components";
 
 const globalStyles = createGlobalStyle`
+
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
   *, html {
     padding : 0;
     margin : 0;
-    font-family: "Roboto Condensed";
-
+    font-family: 'Poppins', sans-serif;
   }
 
   body {
     box-sizing: border-box;
-    font-family: "Roboto Condensed", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
   button {
@@ -33,15 +34,12 @@ export const H1 = styled.h1`
 export const Container = styled.div`
   display: grid;
   margin: auto;
-  max-width: 960px;
-  padding: 0 10px;
-  @media screen and (min-width: 1200px) {
-    max-width: 1050px;
-  }
-
+  padding: 0 clamp(10px, 7vw, 50px);
+  max-width: 1200px;
+  /* 
   @media screen and (min-width: 1400px) {
-    max-width: 1200px;
-  }
+    max-width: 1400px;
+  } */
 
   ${(props) =>
     props.fluid &&
