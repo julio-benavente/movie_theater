@@ -15,8 +15,8 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route exact path="/by_genre" component={ByGenrePage} />
-        <Route exact path="/movies" component={MoviePage} />
+        <Route path="/by_genre" component={ByGenrePage} />
+        <Route path="/movies" component={MoviePage} />
       </Switch>
       <Footer />
     </div>
