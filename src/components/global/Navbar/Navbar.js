@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   Logo,
   Navbar,
@@ -21,13 +22,13 @@ const links = [
   {
     name: "By Genre",
     className: "byGenre",
-    path: "/#byGenre",
+    path: "/by_genre",
   },
 ];
 
 const NavbarComponent = () => {
   const [scrollY, setScrollY] = useState(0);
-  const onChangeScrollYConstrain = 200;
+  const onChangeScrollYConstrain = 120;
 
   useEffect(() => {
     const onScroll = () => {
@@ -57,10 +58,12 @@ const NavbarComponent = () => {
 
   return (
     <Navbar size={`${scrollY > onChangeScrollYConstrain && "small"}`}>
-      <Logo size={`${scrollY > onChangeScrollYConstrain && "small"}`}>
-        <p>Monkey</p>
-        <p>Business</p>
-      </Logo>
+      <Link to="/">
+        <Logo size={`${scrollY > onChangeScrollYConstrain && "small"}`}>
+          <p>Monkey</p>
+          <p>Business</p>
+        </Logo>
+      </Link>
       <NavbarLinks>{navLinks()}</NavbarLinks>
     </Navbar>
   );

@@ -7,6 +7,7 @@ import Footer from "./components/global/Footer/Footer";
 // Pages
 import HomePage from "./components/HomePage/HomePage";
 import ByGenrePage from "./components/ByGenrePage/ByGenrePage";
+import MoviePage from "./components/MoviePage/MoviePage";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/by_genre" component={ByGenrePage} />
+        <Route exact path="/movies" component={MoviePage} />
       </Switch>
       <Footer />
     </div>
