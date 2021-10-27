@@ -24,6 +24,11 @@ const links = [
     className: "byGenre",
     path: "/by_genre",
   },
+  {
+    name: "Movies",
+    className: "movies",
+    path: "/movies",
+  },
 ];
 
 const NavbarComponent = () => {
