@@ -6,6 +6,7 @@ import Footer from "./components/global/Footer/Footer";
 
 // Pages
 import HomePage from "./components/HomePage/HomePage";
+import ByGenrePage from "./components/ByGenrePage/ByGenrePage";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route exact path="/by_genre" component={ByGenrePage} />
       </Switch>
       <Footer />
     </div>
