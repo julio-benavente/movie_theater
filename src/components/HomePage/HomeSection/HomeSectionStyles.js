@@ -40,9 +40,16 @@ export const MoviesDisplay = styled.div`
   overflow: hidden;
   box-shadow: 4px 4px 8px
     ${(props) => transparentize(0.4, props.theme.colors.black)};
+`;
+
+export const MovieCard = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
   .image {
     width: 100%;
     height: 100%;
+    position: absolute;
     background-image: url("https://m.media-amazon.com/images/M/MV5BNTFiNzBlYmEtMTcxZS00ZTEyLWJmYmQtMjYzYjAxNGQwODAzXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg");
     background-position: center;
     background-size: cover;

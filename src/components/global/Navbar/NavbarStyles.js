@@ -16,6 +16,7 @@ export const Logo = styled.div`
     font-weight: 900;
     line-height: 100%;
     color: ${(props) => props.theme.colors.primary};
+    text-transform: uppercase;
 
     &:nth-child(2) {
       color: ${(props) => props.theme.colors.secondary};

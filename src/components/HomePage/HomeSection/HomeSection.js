@@ -6,12 +6,13 @@ import {
   DownButton,
   Headlines,
   HomeSection,
+  MovieCard,
   MoviesDisplay,
 } from "./HomeSectionStyles";
 
 const HomeSectionComponent = () => {
   return (
-    <HomeSection>
+    <HomeSection id="home">
       <Headlines>
         <p className="headline">
           Do not miss any of the <span>premieres</span> we have for you
@@ -25,7 +26,9 @@ const HomeSectionComponent = () => {
         <MdArrowDownward />
       </DownButton>
       <MoviesDisplay>
-        <div className="image"></div>
+        <MovieCard>
+          <div className="image"></div>
+        </MovieCard>
       </MoviesDisplay>
     </HomeSection>
   );

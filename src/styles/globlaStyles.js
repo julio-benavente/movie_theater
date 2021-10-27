@@ -1,17 +1,19 @@
 import styled, { createGlobalStyle, css } from "styled-components";
+import { transparentize } from "polished";
 
 const globalStyles = createGlobalStyle`
 
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
-
-  *, html {
+   *, html {
     padding : 0;
     margin : 0;
-    font-family: 'Poppins', sans-serif;
   }
 
   body {
     box-sizing: border-box;
+    > * {
+        font-family: 'Lato', sans-serif;
+
+    }
   }
 
   button {
@@ -47,4 +49,46 @@ export const Container = styled.div`
       max-width: none;
       padding: 0;
     `}
+`;
+
+export const MovieCard = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 3px 3px 6px
+    ${(props) => transparentize(0.2, props.theme.colors.black)};
+  .image {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-image: url("https://m.media-amazon.com/images/M/MV5BNTFiNzBlYmEtMTcxZS00ZTEyLWJmYmQtMjYzYjAxNGQwODAzXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg");
+    background-position: center;
+    background-size: cover;
+  }
+`;
+
+export const Title = styled.div`
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+  .rectangle {
+    height: 100%;
+    width: 10px;
+    background-color: ${(props) => props.theme.colors.secondary};
+  }
+
+  p {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: ${(props) => props.theme.colors.primary};
+  }
+`;
+
+export const sectionPadding = css`
+  padding-top: clamp(1rem, 10vh, 4rem);
+  padding-bottom: clamp(1rem, 10vh, 4rem);
 `;
