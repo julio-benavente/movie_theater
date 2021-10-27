@@ -6,10 +6,12 @@ import GlobalStyles from "./styles/globlaStyles";
 import theme from "./styles/theme";
 import { BrowserRouter as Router } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import ScrollToTop from "./util/scrollToTop";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
+      <ScrollToTop />
       <GlobalStyles />
       <ThemeProvider theme={theme}>
         <App />

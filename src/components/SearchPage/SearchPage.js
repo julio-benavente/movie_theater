@@ -1,38 +1,37 @@
-import React, { useState } from "react";
-import { MdArrowForward, MdUpdate } from "react-icons/md";
-
+import React from "react";
+import { MdSearch, MdUpdate } from "react-icons/md";
 import {
-  ByGenrePage,
-  GenreButton,
-  GenreButtons,
+  SearchPage,
   LoadMoreButton,
   MovieCardItem,
   MoviesWrapper,
+  SearchWrapper,
   SectionHeader,
   SectionTitle,
-} from "./ByGenrePageStyles";
+} from "./SearchPageStyles";
 
-const ByGenrePageComponent = () => {
-  const [genre, setGenre] = useState("action");
-
+const SearchPageComponent = () => {
   return (
-    <ByGenrePage id="byGenre">
+    <SearchPage id="byGenre">
       <SectionHeader>
         <SectionTitle>
           <div className="rectangle"></div>
-          <p>By genre:</p>
+          <p>Search</p>
         </SectionTitle>
-        <p className="genre">{genre}</p>
       </SectionHeader>
 
-      <GenreButtons>
-        <GenreButton>Action</GenreButton>
-        <GenreButton>Drama</GenreButton>
-        <GenreButton>Sci Fiction</GenreButton>
-        <GenreButton>Comedy</GenreButton>
-        <GenreButton>Romance</GenreButton>
-        <GenreButton>Adventure</GenreButton>
-      </GenreButtons>
+      <SearchWrapper>
+        <input
+          type="text"
+          name="search"
+          className="searchBox"
+          placeholder="Type a movie you want to watch"
+          tabIndex="100"
+        />
+        <div className="searchButton" tabIndex="101">
+          Search <MdSearch />
+        </div>
+      </SearchWrapper>
 
       <MoviesWrapper>
         <MovieCardItem>
@@ -81,13 +80,12 @@ const ByGenrePageComponent = () => {
           <div className="image"></div>
         </MovieCardItem>
       </MoviesWrapper>
-
       <LoadMoreButton>
         <MdUpdate />
         Load more movies
       </LoadMoreButton>
-    </ByGenrePage>
+    </SearchPage>
   );
 };
 
-export default ByGenrePageComponent;
+export default SearchPageComponent;

@@ -22,7 +22,7 @@ const ByGenreSectionComponent = () => {
           <p>By genre:</p>
         </SectionTitle>
         <p className="genre">{genre}</p>
-        <MoreButton to="/">
+        <MoreButton to="/by_genre">
           <span>More of this genre</span>
           <MdArrowForward />
         </MoreButton>

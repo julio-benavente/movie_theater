@@ -8,6 +8,7 @@ import Footer from "./components/global/Footer/Footer";
 import HomePage from "./components/HomePage/HomePage";
 import ByGenrePage from "./components/ByGenrePage/ByGenrePage";
 import MoviePage from "./components/MoviePage/MoviePage";
+import SearchPage from "./components/SearchPage/SearchPage";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route exact path="/" component={HomePage} />
         <Route path="/by_genre" component={ByGenrePage} />
         <Route path="/movies" component={MoviePage} />
+        <Route path="/search" component={SearchPage} />
       </Switch>
       <Footer />
     </div>

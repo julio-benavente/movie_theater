@@ -8,7 +8,7 @@ import {
 } from "../../styles/globlaStyles";
 import { transparentize } from "polished";
 
-export const ByGenrePage = styled(Container)`
+export const SearchPage = styled(Container)`
   ${sectionPadding}
 `;
 
@@ -32,6 +32,44 @@ export const SectionTitle = styled(Title)`
   margin-right: 10px;
 `;
 
+export const SearchWrapper = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  .searchBox {
+    padding: 5px 10px;
+    border: 2px solid
+      ${(props) => transparentize(0.6, props.theme.colors.secondary)};
+    border-radius: 5px;
+    outline: none;
+    &:focus,
+    &:active,
+    &:hover {
+      border: 2px solid ${(props) => props.theme.colors.secondary};
+    }
+  }
+  .searchButton {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    gap: 10px;
+    justify-self: end;
+    padding: 10px 20px;
+    background-color: ${(props) => props.theme.colors.secondary};
+    border-radius: 5px;
+    font-size: 0.8rem;
+    color: ${(props) => props.theme.colors.primary};
+    text-transform: uppercase;
+    font-weight: 700;
+
+    svg {
+      font-size: 1rem;
+    }
+  }
+`;
+
 export const LoadMoreButton = styled(Link)`
   display: grid;
   grid-template-columns: auto auto;
@@ -48,35 +86,6 @@ export const LoadMoreButton = styled(Link)`
   justify-self: center;
   svg {
     font-size: 1rem;
-  }
-`;
-
-export const GenreButtons = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 120px);
-  gap: 1rem;
-  justify-items: stretch;
-  margin-bottom: 1.5rem;
-`;
-
-export const GenreButton = styled.div`
-  display: grid;
-  width: 100%;
-  padding: 10px 0;
-  grid-template-columns: auto;
-  justify-items: center;
-  background-color: ${(props) =>
-    transparentize(0.7, props.theme.colors.secondary)};
-  border-radius: 5px;
-  font-size: 0.8rem;
-  color: ${(props) => props.theme.colors.primary};
-  text-transform: uppercase;
-  font-weight: 700;
-  cursor: pointer;
-  &.active,
-  &:hover {
-    background-color: ${(props) => (props) => props.theme.colors.primary};
-    color: ${(props) => props.theme.colors.white};
   }
 `;
 

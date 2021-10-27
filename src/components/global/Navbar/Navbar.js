@@ -15,11 +15,6 @@ const links = [
     path: "/",
   },
   {
-    name: "Most Popular",
-    className: "mostPopular",
-    path: "/#mostPopular",
-  },
-  {
     name: "By Genre",
     className: "byGenre",
     path: "/by_genre",
@@ -28,6 +23,11 @@ const links = [
     name: "Movies",
     className: "movies",
     path: "/movies",
+  },
+  {
+    name: "Search",
+    className: "search",
+    path: "/search",
   },
 ];
 

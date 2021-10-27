@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Container, sectionPadding, Title } from "../../styles/globlaStyles";
 import { transparentize } from "polished";
 
@@ -132,9 +132,12 @@ export const ImagesSection = styled.div`
 
   .wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    /* grid-template-rows: auto auto auto; */
     gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    ${(props) =>
+      props.movies < 4 &&
+      `grid-template-columns: repeat(auto-fit, minmax(200px, 250px));`}
+
     .item {
       width: 100%;
       height: 130px;

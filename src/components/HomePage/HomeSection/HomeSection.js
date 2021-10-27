@@ -11,6 +11,7 @@ import {
 } from "./HomeSectionStyles";
 
 const HomeSectionComponent = () => {
+  console.log(encodeURIComponent("fhasduj asdkjfh  askj"));
   return (
     <HomeSection id="home">
       <Headlines>

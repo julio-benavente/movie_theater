@@ -103,7 +103,7 @@ const MoviePageComponent = () => {
           </div>
         </div>
       </ImagesSection>
-      <MoviesRelatedSection>
+      <MoviesRelatedSection movies={3}>
         <SectionTitle>
           <div className="rectangle"></div>
           <p>Movies related</p>
