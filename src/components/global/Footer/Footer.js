@@ -26,9 +26,9 @@ const FooterComponent = () => {
           <div className="rectangle"></div>
           <p>Explore</p>
         </SectionTitle>
-        <HashLink to="/#home">Home</HashLink>
-        <HashLink to="/#mostPopular">Most popular</HashLink>
-        <HashLink to="/#byGenre">By genre</HashLink>
+        <Link to="/">Home</Link>
+        <Link to="/by_genre">By Genre</Link>
+        <Link to="/search">Search</Link>
       </FooterSection>
       <FooterSection>
         <SectionTitle>
