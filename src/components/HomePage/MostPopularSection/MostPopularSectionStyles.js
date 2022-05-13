@@ -21,13 +21,17 @@ export const MoviesWrapper = styled.div`
     );
   grid-template-rows: 1fr 1fr;
   gap: 1rem;
-  justify-items: space-between;
+
+  .first {
+    grid-column: 1/2;
+    grid-row: 1/3;
+  }
 `;
 
 export const MovieCardItem = styled(MovieCard)`
   &:first-of-type {
     grid-column: 1/2;
-    grid-row: 1/3;
+    grid-row: 1/5;
   }
 
   &:nth-of-type(1) {

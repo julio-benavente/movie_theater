@@ -1,7 +1,11 @@
 import React from "react";
+
+// Components
+import MovieCard from "../../global/MovieCard/MovieCard";
+
+// Styles
 import {
   MostPopularSection,
-  MovieCardItem,
   MoviesWrapper,
   SectionTitle,
 } from "./MostPopularSectionStyles";
@@ -14,33 +18,16 @@ const MostPopularSectionComponent = () => {
         <p>Most popular</p>
       </SectionTitle>
       <MoviesWrapper>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
+        <MovieCard className="first" />
+        <MovieCard size="small" />
+        <MovieCard size="small" />
+        <MovieCard size="small" />
+        <MovieCard size="small" />
+        <MovieCard size="small" />
+        <MovieCard size="small" />
+        <MovieCard size="small" />
+        <MovieCard size="small" />
+        <MovieCard size="small" />
       </MoviesWrapper>
     </MostPopularSection>
   );
