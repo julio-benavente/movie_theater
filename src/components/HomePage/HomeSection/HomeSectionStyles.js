@@ -1,12 +1,19 @@
 import styled from "styled-components";
 import { Container } from "../../../styles/globlaStyles";
-import { transparentize, darken } from "polished";
+import { transparentize } from "polished";
 
 export const HomeSection = styled(Container)`
   display: grid;
   grid-template-columns: 5fr 3fr;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  column-gap: 4rem;
+  min-height: calc(100vh - 200px);
+  align-content: center;
+
+  @media screen and (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Headlines = styled.div`
@@ -30,22 +37,22 @@ export const Headlines = styled.div`
       font-weight: 200;
     }
   }
+
+  @media screen and (max-width: 700px) {
+    max-width: 400px;
+  }
 `;
 
-export const MoviesDisplay = styled.div`
+export const MovieCard = styled.div`
   width: 350px;
-  height: 500px;
+  aspect-ratio: 9/14;
   justify-self: end;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 4px 4px 8px
     ${(props) => transparentize(0.4, props.theme.colors.black)};
-`;
-
-export const MovieCard = styled.div`
-  width: 100%;
-  height: 100%;
   position: relative;
+
   .image {
     width: 100%;
     height: 100%;
@@ -59,6 +66,18 @@ export const MovieCard = styled.div`
     .moreInfoText {
       max-width: 70px;
     }
+  }
+
+  @media screen and (max-width: 900px) {
+    width: 300px;
+  }
+
+  @media screen and (max-width: 800px) {
+    width: 250px;
+  }
+
+  @media screen and (max-width: 700px) {
+    display: none;i
   }
 `;
 

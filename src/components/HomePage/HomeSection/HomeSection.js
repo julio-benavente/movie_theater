@@ -21,11 +21,9 @@ const HomeSectionComponent = () => {
         </p>
       </Headlines>
 
-      <MoviesDisplay>
-        <MovieCard>
-          <div className="image"></div>
-        </MovieCard>
-      </MoviesDisplay>
+      <MovieCard>
+        <div className="image"></div>
+      </MovieCard>
     </HomeSection>
   );
 };

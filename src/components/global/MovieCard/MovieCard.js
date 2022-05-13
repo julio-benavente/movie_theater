@@ -1,19 +1,12 @@
-import { useState } from "react";
-import {
-  MovieCard,
-  OpenMoreInfoButton,
-  InformationSection,
-} from "./MovieCardStyles";
-import { AnimatePresence, motion } from "framer-motion";
-
-import { MdClose, MdArrowBack } from "react-icons/md";
+import { MovieCard } from "./MovieCardStyles";
 
 const MovieCardComponent = ({ size, ...props }) => {
-  const [movieCardIsOn, setMovieCardIsOn] = useState(false);
-  const handleMovieCard = () => setMovieCardIsOn(!movieCardIsOn);
   return (
     <MovieCard {...props}>
-      <div className="image"></div>
+      <img
+        src="https://m.media-amazon.com/images/M/MV5BNTFiNzBlYmEtMTcxZS00ZTEyLWJmYmQtMjYzYjAxNGQwODAzXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg"
+        alt="movie poster"
+      />
     </MovieCard>
   );
 };

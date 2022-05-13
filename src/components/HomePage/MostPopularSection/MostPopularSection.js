@@ -18,16 +18,16 @@ const MostPopularSectionComponent = () => {
         <p>Most popular</p>
       </SectionTitle>
       <MoviesWrapper>
-        <MovieCard className="first" />
-        <MovieCard size="small" />
-        <MovieCard size="small" />
-        <MovieCard size="small" />
-        <MovieCard size="small" />
-        <MovieCard size="small" />
-        <MovieCard size="small" />
-        <MovieCard size="small" />
-        <MovieCard size="small" />
-        <MovieCard size="small" />
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
+        <MovieCard />
       </MoviesWrapper>
     </MostPopularSection>
   );

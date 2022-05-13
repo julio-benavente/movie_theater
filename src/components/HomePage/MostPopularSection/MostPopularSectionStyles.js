@@ -14,27 +14,18 @@ export const SectionTitle = styled(Title)``;
 
 export const MoviesWrapper = styled.div`
   display: grid;
-  height: 550px;
-  grid-template-columns: minmax(350px, 1fr) repeat(
-      auto-fill,
-      minmax(170px, 1fr)
-    );
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1rem;
 
-  .first {
-    grid-column: 1/2;
-    grid-row: 1/3;
-  }
-`;
-
-export const MovieCardItem = styled(MovieCard)`
-  &:first-of-type {
-    grid-column: 1/2;
-    grid-row: 1/5;
+  @media screen and (max-width: 1150px) {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   }
 
-  &:nth-of-type(1) {
-    width: 100%;
+  @media screen and (max-width: 950px) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  @media screen and (max-width: 740px) {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   }
 `;
