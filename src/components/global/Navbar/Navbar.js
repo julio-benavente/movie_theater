@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import useScrollY from "../../../hooks/useScrollY";
+import useWindowSize from "../../../hooks/useWindowSize";
 import { Link } from "react-router-dom";
 import {
   Logo,
@@ -6,49 +8,28 @@ import {
   NavbarItem,
   NavbarLink,
   NavbarLinks,
+  ToggleMenu,
 } from "./NavbarStyles";
 
-const links = [
-  {
-    name: "Home",
-    className: "home",
-    path: "/",
-  },
-  {
-    name: "By Genre",
-    className: "byGenre",
-    path: "/by_genre",
-  },
-  {
-    name: "Movies",
-    className: "movies",
-    path: "/movies",
-  },
-  {
-    name: "Search",
-    className: "search",
-    path: "/search",
-  },
-];
+// Assets
+import navLinksList from "../../../data/navLinksList";
+import { MdClose, MdMenu } from "react-icons/md";
 
 const NavbarComponent = () => {
-  const [scrollY, setScrollY] = useState(0);
+  const scrollY = useScrollY();
   const onChangeScrollYConstrain = 120;
+  const { width } = useWindowSize();
+  const windowIsSmall = width <= 900;
 
-  useEffect(() => {
-    const onScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", onScroll);
-    // onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const [toggleMenuIsOpen, setToggleMenuIsOpen] = useState(false);
 
   const navLinks = () => {
-    return links.map(({ name, className, path }) => {
+    return navLinksList.map(({ name, className, path }) => {
       return (
-        <NavbarItem className={className}>
+        <NavbarItem
+          className={className}
+          onClick={() => windowIsSmall && setToggleMenuIsOpen(false)}
+        >
           <NavbarLink
             to={path}
             activeClassName="active"
@@ -62,14 +43,29 @@ const NavbarComponent = () => {
   };
 
   return (
-    <Navbar size={`${scrollY > onChangeScrollYConstrain && "small"}`}>
+    <Navbar
+      size={`${scrollY > onChangeScrollYConstrain && "small"}`}
+      data-isOpen={toggleMenuIsOpen}
+    >
       <Link to="/">
         <Logo size={`${scrollY > onChangeScrollYConstrain && "small"}`}>
           <p>Monkey</p>
           <p>Business</p>
         </Logo>
       </Link>
-      <NavbarLinks>{navLinks()}</NavbarLinks>
+      <NavbarLinks windowIsSmall={windowIsSmall} data-isOpen={toggleMenuIsOpen}>
+        {navLinks()}
+      </NavbarLinks>
+
+      <ToggleMenu
+        onClick={() => setToggleMenuIsOpen(!toggleMenuIsOpen)}
+        windowIsSmall={windowIsSmall}
+        data-isOpen={toggleMenuIsOpen}
+        data-size={`${scrollY > onChangeScrollYConstrain && "small"}`}
+      >
+        {toggleMenuIsOpen && <MdClose />}
+        {!toggleMenuIsOpen && <MdMenu />}
+      </ToggleMenu>
     </Navbar>
   );
 };

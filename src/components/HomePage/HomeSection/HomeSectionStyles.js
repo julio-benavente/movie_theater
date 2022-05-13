@@ -4,7 +4,7 @@ import { transparentize, darken } from "polished";
 
 export const HomeSection = styled(Container)`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 5fr 3fr;
   padding-top: 1rem;
   padding-bottom: 1rem;
 `;

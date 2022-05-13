@@ -21,9 +21,24 @@ export const Navbar = styled(Container)`
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
     `}
+
+  @media screen and (max-width: 900px) {
+    width: 100%;
+    box-sizing: border-box;
+    position: sticky;
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr;
+
+    &[data-isOpen="true"] {
+      height: 100vh;
+    }
+  }
 `;
 
 export const Logo = styled.div`
+  display: grid;
+  justify-content: start;
+
   p {
     font-size: 2rem;
     font-weight: 900;
@@ -31,6 +46,7 @@ export const Logo = styled.div`
     color: ${(props) => props.theme.colors.primary};
     text-transform: uppercase;
     transition: ${(props) => props.theme.transitions.regular};
+
     &:nth-child(2) {
       color: ${(props) => props.theme.colors.secondary};
     }
@@ -52,11 +68,29 @@ export const NavbarLinks = styled.div`
   align-content: center;
   grid-auto-flow: column;
   grid-auto-columns: auto;
+
+  @media screen and (max-width: 900px) {
+    display: none;
+    grid-auto-flow: row;
+    justify-content: center;
+    gap: 1rem;
+
+    &[data-isOpen="true"] {
+      display: grid;
+    }
+  }
 `;
 
 export const NavbarItem = styled.div`
   &:not(:last-of-type) {
     margin-right: 10px;
+  }
+
+  @media screen and (max-width: 900px) {
+    text-align: center;
+    &:not(:last-of-type) {
+      margin-right: 0px;
+    }
   }
 `;
 
@@ -84,4 +118,39 @@ export const NavbarLink = styled(Link)`
     css`
       padding: 5px 10px;
     `}
+`;
+
+export const ToggleMenu = styled.div`
+  display: none;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-content: center;
+  border: 1px solid ${(props) => props.theme.colors.secondary};
+  justify-self: end;
+  align-self: center;
+  cursor: pointer;
+  position: absolute;
+  right: clamp(10px, 7vw, 50px);
+  margin: 1px;
+  top: 1rem;
+
+  svg {
+    width: 25px;
+    height: 25px;
+    color: ${(props) => props.theme.colors.secondary};
+  }
+
+  &[data-size="small"] {
+    top: 8px;
+  }
+
+  &:hover {
+    border: 2px solid ${(props) => props.theme.colors.secondary};
+    margin: 0px;
+  }
+
+  @media screen and (max-width: 900px) {
+    display: grid;
+  }
 `;
