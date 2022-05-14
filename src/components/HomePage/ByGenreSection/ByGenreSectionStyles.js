@@ -5,6 +5,7 @@ import {
   Title,
   MovieCard,
   sectionPadding,
+  MoviesWrapper as Wrapper,
 } from "../../../styles/globlaStyles";
 import { transparentize } from "polished";
 
@@ -72,21 +73,14 @@ export const GenreButton = styled.div`
   color: ${(props) => props.theme.colors.primary};
   text-transform: uppercase;
   font-weight: 700;
-    cursor: pointer;
+  cursor: pointer;
   &.active,
   &:hover {
     background-color: ${(props) => (props) => props.theme.colors.primary};
-    color : ${(props) => props.theme.colors.white};
-  
+    color: ${(props) => props.theme.colors.white};
+  }
 `;
 
-export const MoviesWrapper = styled.div`
-  display: grid;
-  height: 550px;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-template-rows: 1fr 1fr;
-  gap: 1rem;
-  justify-items: space-between;
-`;
+export const MoviesWrapper = styled(Wrapper)``;
 
 export const MovieCardItem = styled(MovieCard)``;

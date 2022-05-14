@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MdArrowForward, MdUpdate } from "react-icons/md";
+import { MdUpdate } from "react-icons/md";
 
 import {
   ByGenrePage,
@@ -35,51 +35,14 @@ const ByGenrePageComponent = () => {
       </GenreButtons>
 
       <MoviesWrapper>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
-        <MovieCardItem>
-          <div className="image"></div>
-        </MovieCardItem>
+        {[1, 2, 3, 5, 6, 7, 8, 9, 0].map((e) => (
+          <MovieCardItem>
+            <img
+              src="https://m.media-amazon.com/images/M/MV5BNTFiNzBlYmEtMTcxZS00ZTEyLWJmYmQtMjYzYjAxNGQwODAzXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg"
+              alt="movie poster"
+            />
+          </MovieCardItem>
+        ))}
       </MoviesWrapper>
 
       <LoadMoreButton>

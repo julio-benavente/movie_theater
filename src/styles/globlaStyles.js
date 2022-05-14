@@ -51,21 +51,68 @@ export const Container = styled.div`
     `}
 `;
 
+export const MoviesWrapper = styled.div`
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+  @media screen and (max-width: 1150px) {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  @media screen and (max-width: 950px) {
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  }
+
+  @media screen and (max-width: 800px) {
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  }
+
+  @media screen and (max-width: 500px) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+`;
+
 export const MovieCard = styled.div`
-  width: 100%;
-  height: 100%;
   position: relative;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 3px 3px 6px
-    ${(props) => transparentize(0.2, props.theme.colors.black)};
-  .image {
+
+  img {
     width: 100%;
-    height: 100%;
-    position: absolute;
-    background-image: url("https://m.media-amazon.com/images/M/MV5BNTFiNzBlYmEtMTcxZS00ZTEyLWJmYmQtMjYzYjAxNGQwODAzXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg");
-    background-position: center;
-    background-size: cover;
+    max-width: 600px;
+    aspect-ratio: 9/16;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    box-shadow: 3px 3px 6px
+      ${(props) => transparentize(0.2, props.theme.colors.black)};
+  }
+
+  &:nth-child(n + 9) {
+    display: none;
+  }
+
+  @media screen and (max-width: 1150px) {
+    &:nth-child(n + 9) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 950px) {
+    &:nth-child(n + 7) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 800px) {
+    &:nth-child(n + 5) {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    &:nth-child(n + 3) {
+      display: none;
+    }
   }
 `;
 
