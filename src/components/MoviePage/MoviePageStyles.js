@@ -4,95 +4,92 @@ import { transparentize } from "polished";
 
 export const MoviePage = styled(Container)`
   ${sectionPadding}
-  display: grid;
-  grid-template-columns: 1fr minmax(150px, 300px);
-  grid-template-areas:
-    "information cast"
-    "images images"
-    "related related";
-  gap: 2rem 1rem;
 `;
 
 export const SectionTitle = styled(Title)``;
 
+const sectionMarginBottom = css`
+  margin-bottom: clamp(1rem, 7vh, 2.5rem);
+`;
+
 export const InformationSection = styled.div`
-  grid-area: information;
+  ${sectionMarginBottom}
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(200px, 300px) 1fr;
+  grid-template-columns: auto 1fr;
   column-gap: clamp(1rem, 7vw, 2rem);
+
   .movieImage {
-    background-image: url("https://m.media-amazon.com/images/M/MV5BNTFiNzBlYmEtMTcxZS00ZTEyLWJmYmQtMjYzYjAxNGQwODAzXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg");
-    height: 100%;
-    min-height: 400px;
-    max-height: 500px;
-    background-position: center;
-    background-size: cover;
+    max-width: 300px;
+    aspect-ratio: 9/14;
+    object-fit: cover;
+    object-position: center;
     border-radius: 10px;
     box-shadow: 3px 3px 8px
       ${(props) => transparentize(0.4, props.theme.colors.black)};
   }
+`;
 
-  .info {
-    display: grid;
-    padding: clamp(1rem, 7vw, 3rem) 0;
-    width: 100%;
-    align-content: start;
+export const MovieInformation = styled.div`
+  display: grid;
+  padding: clamp(1rem, 7vw, 3rem) 0;
+  width: 100%;
+  align-content: start;
+  max-width: 500px;
 
-    .movieName {
+  .name {
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    color: ${(props) => props.theme.colors.primary};
+    margin-bottom: 10px;
+    font-weight: 700;
+    .year {
       font-size: clamp(1rem, 4vw, 1.5rem);
-      color: ${(props) => props.theme.colors.primary};
-      margin-bottom: 10px;
-      font-weight: 700;
-      .year {
-        font-size: clamp(1rem, 4vw, 1.5rem);
-        color: ${(props) => props.theme.colors.gray400};
-        font-weight: 500;
-        padding-left: 10px;
-      }
-    }
-    .extra {
       color: ${(props) => props.theme.colors.gray400};
+      font-weight: 500;
+      padding-left: 10px;
+    }
+  }
+  .extra {
+    color: ${(props) => props.theme.colors.gray400};
+    margin-bottom: 10px;
+  }
+
+  .rating {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    border-radius: 100%;
+    border: 5px solid ${(props) => props.theme.colors.secondary};
+    width: 55px;
+    height: 55px;
+    margin-bottom: 10px;
+
+    p {
+      line-height: 100%;
+      font-size: 1.5rem;
+      color: ${(props) => props.theme.colors.primary};
+      span {
+        position: relative;
+        font-size: 0.8rem;
+        top: -7px;
+      }
+    }
+  }
+
+  .summary {
+    .title {
+      font-size: 1.4rem;
+      color: ${(props) => props.theme.colors.primary};
+      font-weight: 700;
       margin-bottom: 10px;
     }
-
-    .rating {
-      display: grid;
-      justify-items: center;
-      align-items: center;
-      border-radius: 100%;
-      border: 5px solid ${(props) => props.theme.colors.secondary};
-      width: 55px;
-      height: 55px;
-      margin-bottom: 10px;
-
-      p {
-        line-height: 100%;
-        font-size: 1.5rem;
-        color: ${(props) => props.theme.colors.primary};
-        span {
-          position: relative;
-          font-size: 0.8rem;
-          top: -7px;
-        }
-      }
-    }
-
-    .summary {
-      .title {
-        font-size: 1.4rem;
-        color: ${(props) => props.theme.colors.primary};
-        font-weight: 700;
-        margin-bottom: 10px;
-      }
-      .content {
-      }
+    .content {
     }
   }
 `;
 
 export const CastSection = styled.div`
-  grid-area: cast;
+  ${sectionMarginBottom}
 
   .castMembers {
     width: 100%;
@@ -128,7 +125,7 @@ export const CastSection = styled.div`
 `;
 
 export const ImagesSection = styled.div`
-  grid-area: images;
+  ${sectionMarginBottom}
 
   .wrapper {
     display: grid;
@@ -156,6 +153,4 @@ export const ImagesSection = styled.div`
   }
 `;
 
-export const MoviesRelatedSection = styled(ImagesSection)`
-  grid-area: related;
-`;
+export const MoviesRelatedSection = styled(ImagesSection)``;

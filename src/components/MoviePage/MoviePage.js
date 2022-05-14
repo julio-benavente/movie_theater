@@ -6,15 +6,20 @@ import {
   MoviePage,
   MoviesRelatedSection,
   SectionTitle,
+  MovieInformation,
 } from "./MoviePageStyles";
 
 const MoviePageComponent = () => {
   return (
     <MoviePage>
       <InformationSection>
-        <div className="movieImage"></div>
-        <div className="info">
-          <div className="movieName">
+        <img
+          className="movieImage"
+          src="https://m.media-amazon.com/images/M/MV5BNTFiNzBlYmEtMTcxZS00ZTEyLWJmYmQtMjYzYjAxNGQwODAzXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg"
+          alt="movie poster"
+        />
+        <MovieInformation>
+          <div className="name">
             Venom: Carnage Liberado<span className="year">(2021)</span>
           </div>
 
@@ -38,69 +43,36 @@ const MoviePageComponent = () => {
               esse harum commodi assumenda?
             </div>
           </div>
-        </div>
+        </MovieInformation>
       </InformationSection>
+
       <CastSection>
         <SectionTitle>
           <div className="rectangle"></div>
           <p>Cast</p>
         </SectionTitle>
         <div className="castMembers">
-          <div className="castMemberCard">
-            <div className="picture"></div>
-            <p className="name">Actor Name</p>
-            <p className="character">Character</p>
-          </div>
-
-          <div className="castMemberCard">
-            <div className="picture"></div>
-            <p className="name">Actor Name</p>
-            <p className="character">Character</p>
-          </div>
-
-          <div className="castMemberCard">
-            <div className="picture"></div>
-            <p className="name">Actor Name</p>
-            <p className="character">Character</p>
-          </div>
-
-          <div className="castMemberCard">
-            <div className="picture"></div>
-            <p className="name">Actor Name</p>
-            <p className="character">Character</p>
-          </div>
-
-          <div className="castMemberCard">
-            <div className="picture"></div>
-            <p className="name">Actor Name Actor Name</p>
-            <p className="character">Character</p>
-          </div>
-
-          <div className="castMemberCard">
-            <div className="picture"></div>
-            <p className="name">Actor Name</p>
-            <p className="character">Character</p>
-          </div>
+          {[0, 1, 2, 3, 4, 5].map((e, i) => (
+            <div key={i} className="castMemberCard">
+              <div className="picture"></div>
+              <p className="name">Actor Name</p>
+              <p className="character">Character</p>
+            </div>
+          ))}
         </div>
       </CastSection>
+
       <ImagesSection>
         <SectionTitle>
           <div className="rectangle"></div>
           <p>Images</p>
         </SectionTitle>
         <div className="wrapper">
-          <div className="item">
-            <div className="image"></div>
-          </div>
-          <div className="item">
-            <div className="image"></div>
-          </div>
-          <div className="item">
-            <div className="image"></div>
-          </div>
-          <div className="item">
-            <div className="image"></div>
-          </div>
+          {[0, 1, 2, 3].map((e, i) => (
+            <div className="item" key={i}>
+              <div className="image"></div>
+            </div>
+          ))}
         </div>
       </ImagesSection>
       <MoviesRelatedSection movies={3}>
@@ -110,15 +82,11 @@ const MoviePageComponent = () => {
         </SectionTitle>
         <div className="movies">
           <div className="wrapper">
-            <div className="item">
-              <div className="image"></div>
-            </div>
-            <div className="item">
-              <div className="image"></div>
-            </div>
-            <div className="item">
-              <div className="image"></div>
-            </div>
+            {[0, 1, 2].map((e, i) => (
+              <div className="item" key={i}>
+                <div className="image"></div>
+              </div>
+            ))}
           </div>
         </div>
       </MoviesRelatedSection>

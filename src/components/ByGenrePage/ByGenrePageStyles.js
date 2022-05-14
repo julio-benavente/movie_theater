@@ -5,6 +5,7 @@ import {
   Title,
   MovieCard,
   sectionPadding,
+  MoviesWrapper as WrapperMovies,
 } from "../../styles/globlaStyles";
 import { transparentize } from "polished";
 
@@ -57,6 +58,19 @@ export const GenreButtons = styled.div`
   gap: 1rem;
   justify-items: stretch;
   margin-bottom: 1.5rem;
+
+  @media screen and (max-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 1rem;
+  }
+
+  @media screen and (max-width: 500px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 350px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const GenreButton = styled.div`
@@ -80,15 +94,8 @@ export const GenreButton = styled.div`
   }
 `;
 
-export const MoviesWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  grid-template-rows: 1fr 1fr;
-  gap: 1rem;
-  justify-items: space-between;
+export const MoviesWrapper = styled(WrapperMovies)`
   margin-bottom: 2rem;
 `;
 
-export const MovieCardItem = styled(MovieCard)`
-  height: 300px;
-`;
+export const MovieCardItem = styled(MovieCard)``;

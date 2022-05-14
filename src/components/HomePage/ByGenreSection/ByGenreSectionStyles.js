@@ -76,6 +76,10 @@ export const GenreButtons = styled.div`
   @media screen and (max-width: 500px) {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  @media screen and (max-width: 350px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const GenreButton = styled.div`
