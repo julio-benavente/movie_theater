@@ -6,6 +6,11 @@ export const Footer = styled(Container)`
   display: grid;
   grid-template-columns: minmax(250px, 1fr) repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
+  background-color: ${(props) => props.theme.colors.gray100};
+
+  @media screen and (max-width: 650px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Headlines = styled.div`
@@ -17,6 +22,10 @@ export const Headlines = styled.div`
     span {
       color: ${(props) => props.theme.colors.secondary};
     }
+  }
+
+  @media screen and (max-width: 650px) {
+    margin-bottom: 2rem;
   }
 `;
 export const Logo = styled.div`
