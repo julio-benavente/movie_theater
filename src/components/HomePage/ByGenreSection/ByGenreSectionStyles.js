@@ -26,6 +26,11 @@ export const SectionHeader = styled.div`
       text-transform: uppercase;
     }
   }
+
+  @media screen and (max-width: 700px) {
+    grid-template-columns: auto 1fr;
+    row-gap: 1rem;
+  }
 `;
 
 export const SectionTitle = styled(Title)`
@@ -50,6 +55,11 @@ export const MoreButton = styled(Link)`
   svg {
     font-size: 1rem;
   }
+
+  @media screen and (max-width: 700px) {
+    grid-column: 1/-1;
+    justify-self: start;
+  }
 `;
 
 export const GenreButtons = styled.div`
@@ -58,6 +68,14 @@ export const GenreButtons = styled.div`
   gap: 1rem;
   justify-items: stretch;
   margin-bottom: 1.5rem;
+
+  @media screen and (max-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media screen and (max-width: 500px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 export const GenreButton = styled.div`
