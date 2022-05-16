@@ -35,10 +35,24 @@ export const InformationSection = styled.div`
   }
 
   @media screen and (max-width: 800px) {
-    grid-template-columns: auto 1fr;
-
     .movieImage {
       max-width: 200px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    column-gap: clamp(0.5rem, 7vw, 1rem);
+    .movieImage {
+      max-width: 170px;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+    .movieImage {
+      max-width: 250px;
+      justify-self: center;
     }
   }
 `;
@@ -102,6 +116,7 @@ export const MovieInformation = styled.div`
 
   @media screen and (max-width: 800px) {
     grid-row: 1/2;
+    padding: 0;
   }
 `;
 
