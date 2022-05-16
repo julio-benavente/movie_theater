@@ -1,6 +1,10 @@
 import styled, { createGlobalStyle, css } from "styled-components";
 import { transparentize } from "polished";
 
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 const globalStyles = createGlobalStyle`
 
    *, html {
@@ -70,6 +74,42 @@ export const MoviesWrapper = styled.div`
 
   @media screen and (max-width: 500px) {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+`;
+
+export const DefaultSlider = styled(Slider)`
+  .slick-slide {
+    outline: none;
+
+    &.slick-active {
+    }
+    &.slick-current {
+    }
+  }
+
+  .slick-list {
+    width: calc(100% - 60px);
+    margin: auto;
+  }
+
+  button.slick-arrow,
+  button.slick-arrow {
+    height: 100%;
+    width: 30px;
+    background-color: ${(props) =>
+      transparentize(0.9, props.theme.colors.black)};
+
+    &::before,
+    &::after {
+      color: ${(props) => props.theme.colors.black};
+    }
+
+    &.slick-prev {
+      left: 0px;
+    }
+    &.slick-next {
+      right: 0px;
+    }
   }
 `;
 
