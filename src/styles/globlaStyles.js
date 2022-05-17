@@ -31,6 +31,7 @@ const globalStyles = createGlobalStyle`
   a {
     text-decoration: none;
   }
+
 `;
 
 export default globalStyles;

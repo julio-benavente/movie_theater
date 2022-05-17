@@ -9,6 +9,7 @@ import { transparentize } from "polished";
 
 export const MoviePage = styled(Container)`
   ${sectionPadding}
+  padding-top: 100px;
 `;
 
 export const SectionTitle = styled(Title)``;

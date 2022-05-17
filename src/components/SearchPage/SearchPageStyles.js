@@ -10,6 +10,7 @@ import { transparentize } from "polished";
 
 export const SearchPage = styled(Container)`
   ${sectionPadding}
+  padding-top: 100px;
 `;
 
 export const SectionHeader = styled.div`

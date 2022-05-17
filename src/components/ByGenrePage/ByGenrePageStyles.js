@@ -12,6 +12,7 @@ import { transparentize } from "polished";
 
 export const ByGenrePage = styled(Container)`
   ${sectionPadding}
+  padding-top: 100px;
 `;
 
 export const SectionHeader = styled.div`

@@ -22,14 +22,11 @@ export const Navbar = styled(Container)`
   ${(props) =>
     props.size === "small" &&
     css`
-      /* padding-top: 10px;
-      padding-bottom: 10px; */
+      padding-top: 10px;
+      padding-bottom: 10px;
     `}
 
   @media screen and (max-width: 900px) {
-    width: 100%;
-    box-sizing: border-box;
-    position: sticky;
     grid-template-columns: auto;
     grid-template-rows: auto 1fr;
 
@@ -138,6 +135,7 @@ export const ToggleMenu = styled.div`
   right: clamp(10px, 7vw, 50px);
   margin: 1px;
   top: 1rem;
+  transition: top 200ms ease-in-out;
 
   svg {
     width: 25px;
