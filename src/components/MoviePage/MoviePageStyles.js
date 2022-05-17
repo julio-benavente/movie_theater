@@ -180,6 +180,7 @@ export const ImagesSection = styled.div`
 export const MovieImagesWrapper = styled.div`
   display: grid;
   grid-template-columns: minmax(100px, 1fr);
+  justify-content: start;
 
   .movie_image {
     width: 300px;

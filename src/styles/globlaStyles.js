@@ -89,7 +89,9 @@ export const DefaultSlider = styled(Slider)`
 
   .slick-list {
     width: calc(100% - 60px);
+    display: grid;
     margin: auto;
+    justify-content: start;
   }
 
   button.slick-arrow,
