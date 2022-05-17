@@ -44,7 +44,7 @@ export const Headlines = styled.div`
 `;
 
 export const MovieCard = styled.div`
-  width: 350px;
+  width: 300px;
   aspect-ratio: 9/14;
   justify-self: end;
   border-radius: 15px;
@@ -53,13 +53,12 @@ export const MovieCard = styled.div`
     ${(props) => transparentize(0.4, props.theme.colors.black)};
   position: relative;
 
-  .image {
+  img {
     width: 100%;
     height: 100%;
     position: absolute;
-    background-image: url("https://m.media-amazon.com/images/M/MV5BNTFiNzBlYmEtMTcxZS00ZTEyLWJmYmQtMjYzYjAxNGQwODAzXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg");
-    background-position: center;
-    background-size: cover;
+    object-fit: cover;
+    object-position: center;
   }
 
   &:hover {
@@ -68,16 +67,12 @@ export const MovieCard = styled.div`
     }
   }
 
-  @media screen and (max-width: 900px) {
-    width: 300px;
-  }
-
   @media screen and (max-width: 800px) {
     width: 250px;
   }
 
   @media screen and (max-width: 700px) {
-    display: none;i
+    display: none;
   }
 `;
 

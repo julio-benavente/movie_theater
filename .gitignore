@@ -26,4 +26,4 @@ requests.http
 
 
 #.env files
-.env
+/*.env

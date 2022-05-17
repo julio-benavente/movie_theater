@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 // Styles
-import {
-  Headlines,
-  HomeSection,
-  MovieCard,
-  MoviesDisplay,
-} from "./HomeSectionStyles";
+import { Headlines, HomeSection, MovieCard } from "./HomeSectionStyles";
 
 const HomeSectionComponent = () => {
+  const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+  const imageBaseUrl = "https://image.tmdb.org/t/p/w500";
+  const [poster, setPoster] = useState(null);
+
+  useEffect(() => {
+    const request = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/popular?api_key=${TMDB_API_KEY}&language=en-US&page=1`
+        );
+
+        const results = response.data.results;
+        setPoster(results[0]);
+      } catch ({ response }) {
+        console.log({ message: "An error just occured", response });
+      }
+    };
+
+    request();
+  }, []);
+
   return (
     <HomeSection id="home">
       <Headlines>
@@ -22,7 +39,12 @@ const HomeSectionComponent = () => {
       </Headlines>
 
       <MovieCard>
-        <div className="image"></div>
+        {poster !== null && (
+          <img
+            src={`${imageBaseUrl}${poster.poster_path}`}
+            alt={poster.original_title}
+          />
+        )}
       </MovieCard>
     </HomeSection>
   );
