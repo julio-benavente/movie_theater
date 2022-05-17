@@ -17,7 +17,7 @@ import { MdClose, MdMenu } from "react-icons/md";
 
 const NavbarComponent = () => {
   const scrollY = useScrollY();
-  const onChangeScrollYConstrain = 120;
+  const onChangeScrollYConstrain = 121;
   const { width } = useWindowSize();
   const windowIsSmall = width <= 900;
 

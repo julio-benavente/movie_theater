@@ -10,10 +10,14 @@ import {
   MoviesWrapper,
   SectionHeader,
   SectionTitle,
+  Slider,
 } from "./ByGenrePageStyles";
+
+import defaultSliderSettings from "../../util/defaultSliderSettings";
 
 const ByGenrePageComponent = () => {
   const [genre, setGenre] = useState("action");
+  const sliderSettings = { ...defaultSliderSettings };
 
   return (
     <ByGenrePage id="byGenre">
@@ -35,20 +39,24 @@ const ByGenrePageComponent = () => {
       </GenreButtons>
 
       <MoviesWrapper>
-        {[1, 2, 3, 5, 6, 7, 8, 9, 0].map((e) => (
-          <MovieCardItem>
-            <img
-              src="https://m.media-amazon.com/images/M/MV5BNTFiNzBlYmEtMTcxZS00ZTEyLWJmYmQtMjYzYjAxNGQwODAzXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg"
-              alt="movie poster"
-            />
-          </MovieCardItem>
-        ))}
+        <Slider {...sliderSettings}>
+          {[1, 2, 3, 5, 6, 7, 8, 9, 10, 1, 2, 3, 5, 6, 7, 8, 9, 10].map(
+            (e, i) => (
+              <MovieCardItem key={i}>
+                <img
+                  src="https://m.media-amazon.com/images/M/MV5BNTFiNzBlYmEtMTcxZS00ZTEyLWJmYmQtMjYzYjAxNGQwODAzXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg"
+                  alt="movie poster"
+                />
+              </MovieCardItem>
+            )
+          )}
+        </Slider>
       </MoviesWrapper>
-
+      {/* 
       <LoadMoreButton>
         <MdUpdate />
         Load more movies
-      </LoadMoreButton>
+      </LoadMoreButton> */}
     </ByGenrePage>
   );
 };
