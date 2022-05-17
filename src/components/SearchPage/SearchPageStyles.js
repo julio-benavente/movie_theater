@@ -39,6 +39,7 @@ export const SearchWrapper = styled.div`
   grid-template-columns: 1fr auto;
   gap: 1rem;
   margin-bottom: 1rem;
+
   .searchBox {
     padding: 5px 10px;
     border: 2px solid
