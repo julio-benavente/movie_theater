@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 // Styles
 import {
@@ -16,6 +17,7 @@ const MostPopularSectionComponent = () => {
   const [movies, setMovies] = useState(null);
   const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY;
   const imageBaseUrl = "https://image.tmdb.org/t/p/w500";
+  const history = useHistory();
 
   useEffect(() => {
     const request = async () => {
@@ -43,7 +45,10 @@ const MostPopularSectionComponent = () => {
         {movies !== null && (
           <Slider {...defaultSliderSettings}>
             {movies.map((movie, i) => (
-              <PosterItem key={i}>
+              <PosterItem
+                key={i}
+                onClick={() => history.push(`/movies/${movie.id}`)}
+              >
                 <img
                   src={`${imageBaseUrl}${movie.poster_path}`}
                   alt={movie.original_title}

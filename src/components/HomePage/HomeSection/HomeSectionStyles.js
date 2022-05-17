@@ -59,6 +59,12 @@ export const MovieCard = styled.div`
     position: absolute;
     object-fit: cover;
     object-position: center;
+    transition: ${(props) => props.theme.transitions.regular};
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &:hover {

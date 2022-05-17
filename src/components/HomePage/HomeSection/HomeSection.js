@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 // Styles
 import { Headlines, HomeSection, MovieCard } from "./HomeSectionStyles";
@@ -8,6 +9,7 @@ const HomeSectionComponent = () => {
   const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY;
   const imageBaseUrl = "https://image.tmdb.org/t/p/w500";
   const [poster, setPoster] = useState(null);
+  const history = useHistory();
 
   useEffect(() => {
     const request = async () => {
@@ -38,7 +40,7 @@ const HomeSectionComponent = () => {
         </p>
       </Headlines>
 
-      <MovieCard>
+      <MovieCard onClick={() => history.push(`/movies/${poster.id}`)}>
         {poster !== null && (
           <img
             src={`${imageBaseUrl}${poster.poster_path}`}

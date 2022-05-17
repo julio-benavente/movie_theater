@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MdArrowForward } from "react-icons/md";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 import {
   ByGenreSection,
@@ -23,6 +24,7 @@ const ByGenreSectionComponent = () => {
 
   const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY;
   const imageBaseUrl = "https://image.tmdb.org/t/p/w500";
+  const history = useHistory();
 
   useEffect(() => {
     const request = async () => {
@@ -95,7 +97,10 @@ const ByGenreSectionComponent = () => {
         {movies !== null && (
           <MoviesSlider {...defaultSliderSettings}>
             {movies.map((movie, i) => (
-              <MovieCard key={i}>
+              <MovieCard
+                key={i}
+                onClick={() => history.push(`/movies/${movie.id}`)}
+              >
                 <img
                   src={`${imageBaseUrl}${movie.poster_path}`}
                   alt={movie.original_title}

@@ -141,8 +141,10 @@ export const SliderWrapper = styled.div`
 
 export const PosterSliderItem = styled.div`
   position: relative;
+  outline: none;
 
   img {
+    position: relative;
     width: calc(100% - 2rem);
     margin: 1rem;
     display: block;
@@ -152,6 +154,12 @@ export const PosterSliderItem = styled.div`
     box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
       0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
       0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
+    transition: ${(props) => props.theme.transitions.regular};
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 `;
 
