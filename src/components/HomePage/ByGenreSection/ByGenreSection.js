@@ -6,13 +6,25 @@ import {
   GenreButton,
   GenreButtons,
   MoreButton,
-  MovieCardItem,
+  MovieCard,
   MoviesWrapper,
   SectionHeader,
   SectionTitle,
+  MoviesSlider,
 } from "./ByGenreSectionStyles";
+
+import defaultSliderSettings from "../../../util/defaultSliderSettings";
+
 const ByGenreSectionComponent = () => {
   const [genre, setGenre] = useState("action");
+  const genreList = [
+    "Action",
+    "Drama",
+    "Sci Fiction",
+    "Comedy",
+    "Romance",
+    "Adventure",
+  ];
 
   return (
     <ByGenreSection id="byGenre">
@@ -29,23 +41,22 @@ const ByGenreSectionComponent = () => {
       </SectionHeader>
 
       <GenreButtons>
-        <GenreButton>Action</GenreButton>
-        <GenreButton>Drama</GenreButton>
-        <GenreButton>Sci Fiction</GenreButton>
-        <GenreButton>Comedy</GenreButton>
-        <GenreButton>Romance</GenreButton>
-        <GenreButton>Adventure</GenreButton>
+        {genreList.map((e, i) => (
+          <GenreButton key={i}>{e}</GenreButton>
+        ))}
       </GenreButtons>
 
       <MoviesWrapper>
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((e) => (
-          <MovieCardItem>
-            <img
-              src="https://m.media-amazon.com/images/M/MV5BNTFiNzBlYmEtMTcxZS00ZTEyLWJmYmQtMjYzYjAxNGQwODAzXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg"
-              alt="movie poster"
-            />
-          </MovieCardItem>
-        ))}
+        <MoviesSlider {...defaultSliderSettings}>
+          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((e, i) => (
+            <MovieCard key={i}>
+              <img
+                src="https://m.media-amazon.com/images/M/MV5BNTFiNzBlYmEtMTcxZS00ZTEyLWJmYmQtMjYzYjAxNGQwODAzXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg"
+                alt="movie poster"
+              />
+            </MovieCard>
+          ))}
+        </MoviesSlider>
       </MoviesWrapper>
     </ByGenreSection>
   );

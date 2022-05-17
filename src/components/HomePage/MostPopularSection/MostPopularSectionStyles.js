@@ -3,7 +3,9 @@ import {
   Container,
   Title,
   sectionPadding,
-  MoviesWrapper as Wrapper,
+  DefaultSlider,
+  PosterSliderItem,
+  SliderWrapper,
 } from "../../../styles/globlaStyles";
 
 export const MostPopularSection = styled(Container)`
@@ -12,4 +14,8 @@ export const MostPopularSection = styled(Container)`
 
 export const SectionTitle = styled(Title)``;
 
-export const MoviesWrapper = styled(Wrapper)``;
+export const MoviesWrapper = styled(SliderWrapper)``;
+
+export const PosterItem = styled(PosterSliderItem)``;
+
+export const Slider = styled(DefaultSlider)``;

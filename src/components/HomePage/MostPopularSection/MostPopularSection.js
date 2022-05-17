@@ -1,14 +1,15 @@
 import React from "react";
 
-// Components
-import MovieCard from "../../global/MovieCard/MovieCard";
-
 // Styles
 import {
   MostPopularSection,
   MoviesWrapper,
   SectionTitle,
+  PosterItem,
+  Slider,
 } from "./MostPopularSectionStyles";
+
+import defaultSliderSettings from "../../../util/defaultSliderSettings";
 
 const MostPopularSectionComponent = () => {
   return (
@@ -18,16 +19,16 @@ const MostPopularSectionComponent = () => {
         <p>Most popular</p>
       </SectionTitle>
       <MoviesWrapper>
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
+        <Slider {...defaultSliderSettings}>
+          {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13].map((e, i) => (
+            <PosterItem key={i}>
+              <img
+                src="https://m.media-amazon.com/images/M/MV5BNTFiNzBlYmEtMTcxZS00ZTEyLWJmYmQtMjYzYjAxNGQwODAzXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg"
+                alt="movie poster"
+              />
+            </PosterItem>
+          ))}
+        </Slider>
       </MoviesWrapper>
     </MostPopularSection>
   );

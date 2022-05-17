@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import {
   Container,
   Title,
-  MovieCard,
   sectionPadding,
-  MoviesWrapper as Wrapper,
+  DefaultSlider,
+  PosterSliderItem,
+  SliderWrapper,
 } from "../../../styles/globlaStyles";
 import { transparentize } from "polished";
 
@@ -103,6 +104,8 @@ export const GenreButton = styled.div`
   }
 `;
 
-export const MoviesWrapper = styled(Wrapper)``;
+export const MoviesWrapper = styled(SliderWrapper)``;
 
-export const MovieCardItem = styled(MovieCard)``;
+export const MoviesSlider = styled(DefaultSlider)``;
+
+export const MovieCard = styled(PosterSliderItem)``;

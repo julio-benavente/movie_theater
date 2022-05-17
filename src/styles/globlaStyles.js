@@ -120,41 +120,35 @@ export const MovieCard = styled.div`
 
   img {
     width: 100%;
-    max-width: 600px;
-    aspect-ratio: 9/16;
+    max-width: 300px;
+    aspect-ratio: 1/1;
+    margin: 1rem;
     object-fit: cover;
     object-position: center;
     border-radius: 10px;
     box-shadow: 3px 3px 6px
       ${(props) => transparentize(0.2, props.theme.colors.black)};
   }
+`;
 
-  &:nth-child(n + 9) {
-    display: none;
-  }
+export const SliderWrapper = styled.div`
+  display: grid;
+  grid-template-columns: minmax(100px, 1fr);
+`;
 
-  @media screen and (max-width: 1150px) {
-    &:nth-child(n + 9) {
-      display: none;
-    }
-  }
+export const PosterSliderItem = styled.div`
+  position: relative;
 
-  @media screen and (max-width: 950px) {
-    &:nth-child(n + 7) {
-      display: none;
-    }
-  }
-
-  @media screen and (max-width: 800px) {
-    &:nth-child(n + 5) {
-      display: none;
-    }
-  }
-
-  @media screen and (max-width: 500px) {
-    &:nth-child(n + 3) {
-      display: none;
-    }
+  img {
+    width: calc(100% - 2rem);
+    margin: 1rem;
+    display: block;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+      0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+      0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
   }
 `;
 

@@ -5,7 +5,8 @@ import {
   Title,
   MovieCard,
   sectionPadding,
-  MoviesWrapper as WrapperMovies,
+  DefaultSlider,
+  PosterSliderItem,
 } from "../../styles/globlaStyles";
 import { transparentize } from "polished";
 
@@ -94,8 +95,6 @@ export const GenreButton = styled.div`
   }
 `;
 
-export const MoviesWrapper = styled(WrapperMovies)`
-  margin-bottom: 2rem;
-`;
+export const MoviesWrapper = styled(DefaultSlider)``;
 
-export const MovieCardItem = styled(MovieCard)``;
+export const MovieCardItem = styled(PosterSliderItem)``;
