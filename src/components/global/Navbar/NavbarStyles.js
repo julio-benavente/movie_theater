@@ -3,23 +3,27 @@ import { NavHashLink as Link } from "react-router-hash-link";
 import { Container } from "../../../styles/globlaStyles";
 import { transparentize } from "polished";
 
+export const NavWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+`;
+
 export const Navbar = styled(Container)`
-  width: auto;
+  width: 100%;
   grid-template-columns: auto 1fr;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  position: sticky;
-  top: 0;
+  position: absolute;
   background-color: ${(props) => props.theme.colors.white};
-  z-index: 100;
-  transition: ${(props) => props.theme.transitions.regular};
+  transition: ${(props) => props.theme.transitions.slow};
 
-  // Small size
   ${(props) =>
     props.size === "small" &&
     css`
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
+      /* padding-top: 10px;
+      padding-bottom: 10px; */
     `}
 
   @media screen and (max-width: 900px) {

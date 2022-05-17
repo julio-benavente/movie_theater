@@ -4,6 +4,7 @@ import useWindowSize from "../../../hooks/useWindowSize";
 import { Link } from "react-router-dom";
 import {
   Logo,
+  NavWrapper,
   Navbar,
   NavbarItem,
   NavbarLink,
@@ -17,7 +18,7 @@ import { MdClose, MdMenu } from "react-icons/md";
 
 const NavbarComponent = () => {
   const scrollY = useScrollY();
-  const onChangeScrollYConstrain = 121;
+  const onChangeScrollYConstrain = 120;
   const { width } = useWindowSize();
   const windowIsSmall = width <= 900;
 
@@ -43,30 +44,35 @@ const NavbarComponent = () => {
   };
 
   return (
-    <Navbar
-      size={`${scrollY > onChangeScrollYConstrain && "small"}`}
-      data-isOpen={toggleMenuIsOpen}
-    >
-      <Link to="/">
-        <Logo size={`${scrollY > onChangeScrollYConstrain && "small"}`}>
-          <p>Monkey</p>
-          <p>Business</p>
-        </Logo>
-      </Link>
-      <NavbarLinks windowIsSmall={windowIsSmall} data-isOpen={toggleMenuIsOpen}>
-        {navLinks()}
-      </NavbarLinks>
-
-      <ToggleMenu
-        onClick={() => setToggleMenuIsOpen(!toggleMenuIsOpen)}
-        windowIsSmall={windowIsSmall}
+    <NavWrapper style={{ position: "sticky", top: 0 }}>
+      <Navbar
+        size={`${scrollY > onChangeScrollYConstrain && "small"}`}
         data-isOpen={toggleMenuIsOpen}
-        data-size={`${scrollY > onChangeScrollYConstrain && "small"}`}
       >
-        {toggleMenuIsOpen && <MdClose />}
-        {!toggleMenuIsOpen && <MdMenu />}
-      </ToggleMenu>
-    </Navbar>
+        <Link to="/">
+          <Logo size={`${scrollY > onChangeScrollYConstrain && "small"}`}>
+            <p>Monkey</p>
+            <p>Business</p>
+          </Logo>
+        </Link>
+        <NavbarLinks
+          windowIsSmall={windowIsSmall}
+          data-isOpen={toggleMenuIsOpen}
+        >
+          {navLinks()}
+        </NavbarLinks>
+
+        <ToggleMenu
+          onClick={() => setToggleMenuIsOpen(!toggleMenuIsOpen)}
+          windowIsSmall={windowIsSmall}
+          data-isOpen={toggleMenuIsOpen}
+          data-size={`${scrollY > onChangeScrollYConstrain && "small"}`}
+        >
+          {toggleMenuIsOpen && <MdClose />}
+          {!toggleMenuIsOpen && <MdMenu />}
+        </ToggleMenu>
+      </Navbar>
+    </NavWrapper>
   );
 };
 
