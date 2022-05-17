@@ -71,7 +71,12 @@ const ByGenreSectionComponent = () => {
           <p>By genre:</p>
         </SectionTitle>
         <p className="genre">{currentGenre && currentGenre.name}</p>
-        <MoreButton to="/by_genre">
+        <MoreButton
+          to={{
+            pathname: "/by_genre",
+            state: { previousGenre: currentGenre },
+          }}
+        >
           <span>More of this genre</span>
           <MdArrowForward />
         </MoreButton>

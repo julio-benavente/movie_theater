@@ -16,8 +16,11 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/by_genre" component={ByGenrePage} />
-        <Route path="/movies" component={MoviePage} />
+        <Route
+          path={["/by_genre/", "/by_genre/:genreId"]}
+          component={ByGenrePage}
+        />
+        <Route path="/movies/:movieId" component={MoviePage} />
         <Route path="/search" component={SearchPage} />
       </Switch>
       <Footer />
