@@ -4,14 +4,18 @@ import { Container } from "../../../styles/globlaStyles";
 import { transparentize } from "polished";
 
 export const NavWrapper = styled.div`
-  position: absolute;
+  position: sticky;
   top: 0;
   width: 100%;
   z-index: 100;
+  background-color: ${(props) => props.theme.colors.primary};
 `;
 
 export const Navbar = styled(Container)`
   width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
   grid-template-columns: auto 1fr;
   padding-top: 1rem;
   padding-bottom: 1rem;

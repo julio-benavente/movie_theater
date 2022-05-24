@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, useHistory } from "react-router-dom";
+import axios from "axios";
+import defaultSliderSettings from "../../util/defaultSliderSettings";
 
 import {
   CastSection,
@@ -15,134 +18,206 @@ import {
   MoviesRelatedSlider,
 } from "./MoviePageStyles";
 
-var sliderSettings = {
-  speed: 500,
-  slidesToShow: 4,
-  slidesToScroll: 4,
-  initialSlide: 0,
-  infinite: false,
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 3,
-        slidesToScroll: 3,
-      },
-    },
-    {
-      breakpoint: 800,
-      settings: {
-        slidesToShow: 2,
-        slidesToScroll: 2,
-      },
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-      },
-    },
-  ],
-};
-
 const MoviePageComponent = () => {
+  const [movie, setMovie] = useState(null);
+  const [cast, setCast] = useState(null);
+  const [images, setImages] = useState(null);
+  const [moviesRelated, setMoviesRelated] = useState(null);
+
+  const { movieId } = useParams();
+  const history = useHistory();
+  const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+  const imageBaseUrl = "https://image.tmdb.org/t/p/w500";
+
+  useEffect(() => {
+    const request = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/${movieId}?api_key=${TMDB_API_KEY}&language=en-US`
+        );
+
+        const result = response.data;
+        setMovie(result);
+      } catch ({ response }) {
+        console.log({ message: "An error occured", response });
+      }
+    };
+
+    request();
+  }, [movieId, TMDB_API_KEY]);
+
+  useEffect(() => {
+    const request = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/${movieId}/images?api_key=${TMDB_API_KEY}`
+        );
+
+        const results = response.data.backdrops;
+        setImages(results);
+      } catch ({ response }) {
+        console.log({ message: "An error occured", response });
+      }
+    };
+
+    request();
+  }, [movieId, TMDB_API_KEY]);
+
+  useEffect(() => {
+    const request = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${TMDB_API_KEY}&language=en-US`
+        );
+
+        const result = response.data.cast;
+        setCast(result);
+      } catch ({ response }) {
+        console.log({ message: "An error occured", response });
+      }
+    };
+
+    request();
+  }, [movieId, TMDB_API_KEY]);
+
+  useEffect(() => {
+    const request = async () => {
+      try {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${TMDB_API_KEY}&language=en-US&page=1`
+        );
+
+        const results = response.data.results;
+        setMoviesRelated(results);
+      } catch ({ response }) {
+        console.log({ message: "An error occured", response });
+      }
+    };
+
+    request();
+  }, [movieId, TMDB_API_KEY]);
+
   return (
-    <MoviePage>
-      <InformationSection>
-        <img
-          className="movieImage"
-          src="https://m.media-amazon.com/images/M/MV5BNTFiNzBlYmEtMTcxZS00ZTEyLWJmYmQtMjYzYjAxNGQwODAzXkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_.jpg"
-          alt="movie poster"
-        />
-        <MovieInformation>
-          <div className="name">
-            Venom: Carnage Liberado<span className="year">(2021)</span>
-          </div>
-
-          <div className="extra">
-            <span className="date">01/01/2021</span>
-            <span className="genres"> ~ Action, science fiction</span>
-            <span className="duration"> ~ 1h 50m</span>
-          </div>
-          <div className="rating">
-            <p className="number">
-              70<span className="percentage">%</span>
-            </p>
-          </div>
-          <div className="summary">
-            <div className="title">Summary</div>
-            <div className="content">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptatem quo iusto libero, earum nisi ipsum adipisci pariatur
-              cumque veniam obcaecati illo dolores animi aliquid dicta. Dolore
-              soluta sunt atque ut sapiente modi, repudiandae debitis cum qui
-              esse harum commodi assumenda?
+    movie !== null && (
+      <MoviePage>
+        <InformationSection>
+          <img
+            className="movieImage"
+            src={`${imageBaseUrl}${movie.poster_path}`}
+            alt={movie.title}
+          />
+          <MovieInformation>
+            <div className="name">
+              {movie.title}
+              <span className="year">{`(${new Date(
+                movie.release_date
+              ).getFullYear()})`}</span>
             </div>
+
+            <div className="extra">
+              <span className="date">
+                {new Date(movie.release_date).toLocaleDateString([], {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "numeric",
+                })}
+              </span>{" "}
+              <span className="genres">
+                ~ {movie.genres.map((e) => e.name).join(", ")}
+              </span>{" "}
+              <span className="duration">
+                {" "}
+                ~ {`${Math.floor(movie.runtime / 60)}h ${movie.runtime % 60}m`}
+              </span>
+            </div>
+            <div className="rating">
+              <p className="number">
+                {movie.vote_average * 10}
+                <span className="percentage">%</span>
+              </p>
+            </div>
+            <div className="summary">
+              <div className="title">Summary</div>
+              <div className="content">{movie.overview}</div>
+            </div>
+          </MovieInformation>
+        </InformationSection>
+
+        <CastSection>
+          <SectionTitle>
+            <div className="rectangle"></div>
+            <p>Cast</p>
+          </SectionTitle>
+          <div className="castMembers">
+            {cast !== null && (
+              <CastSlider {...defaultSliderSettings}>
+                {cast.map((cast, i) => (
+                  <div key={i} className="castMemberCard">
+                    <div className="actor_image">
+                      <img
+                        src={
+                          cast.profile_path
+                            ? `${imageBaseUrl}${cast.profile_path}`
+                            : "https://media.istockphoto.com/vectors/user-icon-flat-isolated-on-white-background-user-symbol-vector-vector-id1300845620?k=20&m=1300845620&s=612x612&w=0&h=f4XTZDAv7NPuZbG0habSpU0sNgECM0X7nbKzTUta3n8="
+                        }
+                        alt={cast.name}
+                      />
+                    </div>
+                    <p className="name">{cast.name}</p>
+                    <p className="character">{cast.character}</p>
+                  </div>
+                ))}
+              </CastSlider>
+            )}
           </div>
-        </MovieInformation>
-      </InformationSection>
+        </CastSection>
 
-      <CastSection>
-        <SectionTitle>
-          <div className="rectangle"></div>
-          <p>Cast</p>
-        </SectionTitle>
-        <div className="castMembers">
-          <CastSlider {...sliderSettings}>
-            {[0, 1, 2, 3, 4, 5].map((e, i) => (
-              <div key={i} className="castMemberCard">
-                <div className="actor_image">
-                  <img
-                    src="https://www.fortressofsolitude.co.za/wp-content/uploads/2020/12/The-New-York-Times-List-Of-Top-25-Actors-Of-The-21st-Century-Is-Controversial.jpg"
-                    alt="actor poster"
-                  />
-                </div>
-                <p className="name">Actor Name</p>
-                <p className="character">Character</p>
-              </div>
-            ))}
-          </CastSlider>
-        </div>
-      </CastSection>
-
-      <ImagesSection>
-        <SectionTitle>
-          <div className="rectangle"></div>
-          <p>Images</p>
-        </SectionTitle>
-        <MovieImagesWrapper>
-          <ImagesSlider {...sliderSettings}>
-            {[0, 1, 2, 3].map((e, i) => (
-              <div className="movie_image" key={i}>
-                <img
-                  src="https://www.cnet.com/a/img/5OVL3iMZjo0wld8Uj15_C00bqKo=/940x0/2021/09/03/afa4abf1-ea46-45bf-b4d0-84259920a236/qlwgiefucodivdzjgil7.jpg"
-                  alt="movie poster"
-                />
-              </div>
-            ))}
-          </ImagesSlider>
-        </MovieImagesWrapper>
-      </ImagesSection>
-      <MoviesRelatedSection movies={3}>
-        <SectionTitle>
-          <div className="rectangle"></div>
-          <p>Movies related</p>
-        </SectionTitle>
-        <MoviesRelatedWrapper className="wrapper">
-          <MoviesRelatedSlider {...sliderSettings}>
-            {[0, 1, 2].map((e, i) => (
-              <div className="movie_image" key={i}>
-                <img
-                  src="https://www.cnet.com/a/img/5OVL3iMZjo0wld8Uj15_C00bqKo=/940x0/2021/09/03/afa4abf1-ea46-45bf-b4d0-84259920a236/qlwgiefucodivdzjgil7.jpg"
-                  alt="movie poster"
-                />
-              </div>
-            ))}
-          </MoviesRelatedSlider>
-        </MoviesRelatedWrapper>
-      </MoviesRelatedSection>
-    </MoviePage>
+        <ImagesSection>
+          <SectionTitle>
+            <div className="rectangle"></div>
+            <p>Images</p>
+          </SectionTitle>
+          <MovieImagesWrapper>
+            {images !== null && (
+              <ImagesSlider {...defaultSliderSettings}>
+                {images.map((image, i) => (
+                  <div className="movie_image" key={i}>
+                    <img
+                      src={`${imageBaseUrl}${image.file_path}`}
+                      alt="movie poster"
+                    />
+                  </div>
+                ))}
+              </ImagesSlider>
+            )}
+          </MovieImagesWrapper>
+        </ImagesSection>
+        <MoviesRelatedSection movies={3}>
+          <SectionTitle>
+            <div className="rectangle"></div>
+            <p>Movies related</p>
+          </SectionTitle>
+          <MoviesRelatedWrapper className="wrapper">
+            {moviesRelated !== null && (
+              <MoviesRelatedSlider {...defaultSliderSettings}>
+                {moviesRelated.map((movie, i) => (
+                  <div
+                    className="movie_image"
+                    key={i}
+                    onClick={() => history.push(`/movies/${movie.id}`)}
+                  >
+                    <img
+                      src={`${imageBaseUrl}${movie.backdrop_path}`}
+                      alt={movie.title}
+                    />
+                  </div>
+                ))}
+              </MoviesRelatedSlider>
+            )}
+          </MoviesRelatedWrapper>
+        </MoviesRelatedSection>
+      </MoviePage>
+    )
   );
 };
 

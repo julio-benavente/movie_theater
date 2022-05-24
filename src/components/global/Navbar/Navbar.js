@@ -44,7 +44,7 @@ const NavbarComponent = () => {
   };
 
   return (
-    <NavWrapper style={{ position: "sticky", top: 0 }}>
+    <NavWrapper size={`${scrollY > onChangeScrollYConstrain && "small"}`}>
       <Navbar
         size={`${scrollY > onChangeScrollYConstrain && "small"}`}
         data-isOpen={toggleMenuIsOpen}

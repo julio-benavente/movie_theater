@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MdUpdate } from "react-icons/md";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 import {
   ByGenrePage,
@@ -22,6 +23,7 @@ const ByGenrePageComponent = (props) => {
   const [movies, setMovies] = useState(null);
   const [genres, setGenres] = useState(null);
   const [currentGenre, setCurrentGenre] = useState(previousGenre);
+  const history = useHistory();
 
   const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY;
   const imageBaseUrl = "https://image.tmdb.org/t/p/w500";
@@ -93,7 +95,10 @@ const ByGenrePageComponent = (props) => {
         {movies !== null && (
           <Slider {...sliderSettings}>
             {movies.map((movie, i) => (
-              <MovieCardItem key={i}>
+              <MovieCardItem
+                key={i}
+                onClick={() => history.push(`/movies/${movie.id}`)}
+              >
                 <img
                   src={`${imageBaseUrl}${movie.poster_path}`}
                   alt={movie.original_title}
