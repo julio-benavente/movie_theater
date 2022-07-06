@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { MdArrowForward } from "react-icons/md";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import Select from "react-select";
 
 import {
   ByGenreSection,
@@ -19,12 +20,18 @@ import defaultSliderSettings from "../../../util/defaultSliderSettings";
 
 const ByGenreSectionComponent = () => {
   const [movies, setMovies] = useState(null);
-  const [genres, setGenres] = useState(null);
+  const [genres, setGenres] = useState([]);
   const [currentGenre, setCurrentGenre] = useState(null);
+  const [selectGenresOptions, setSelectGenresOptions] = useState([]);
+  const [defaultGenre, setDefaultGenre] = useState(null);
 
   const TMDB_API_KEY = process.env.REACT_APP_TMDB_API_KEY;
   const imageBaseUrl = "https://image.tmdb.org/t/p/w500";
   const history = useHistory();
+
+  const handleGenreSelect = (e) => {
+    set;
+  };
 
   useEffect(() => {
     const request = async () => {
@@ -37,6 +44,10 @@ const ByGenreSectionComponent = () => {
 
         setGenres(results);
         setCurrentGenre(results[0]);
+        setSelectGenresOptions(
+          results.map((e) => ({ label: e.name, value: e.id }))
+        );
+        setDefaultGenre({ label: results[0].name, value: results[0].id });
       } catch ({ response }) {
         console.log({ message: "An error just occured", response });
       }
@@ -72,7 +83,11 @@ const ByGenreSectionComponent = () => {
           <div className="rectangle"></div>
           <p>By genre:</p>
         </SectionTitle>
-        <p className="genre">{currentGenre && currentGenre.name}</p>
+        <Select
+          options={selectGenresOptions}
+          defaultInputValue={defaultGenre}
+        />
+        <div className="genre">{currentGenre && currentGenre.name}</div>
         <MoreButton
           to={{
             pathname: "/by_genre",
